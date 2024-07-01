@@ -5,12 +5,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Average calc = new Average();
-            Console.WriteLine("Você quer calcular a média de quantos números?");
-            int quant = int.Parse(Console.ReadLine());
-            int[] vetor = new int[quant];
             try
             {
+                Average calc = new Average();
+                Console.WriteLine("Você quer calcular a média de quantos números?");
+                int quant = int.Parse(Console.ReadLine());
+                int[] vetor = new int[quant];
+           
                 for (int i = 0; i >= 0; i++)
                 {
                     Console.WriteLine($"Digite o {i + 1}º número: ");
@@ -27,7 +28,7 @@ namespace ConsoleApp1
                     }
                     else if (Console.ReadLine().ToUpper() == "N")
                     {
-                        break;
+                       
                     }
                     else
                     {
@@ -35,13 +36,17 @@ namespace ConsoleApp1
                         continue;
                     }
                 }
-       
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
+
+                Console.WriteLine(calc.CalcularMedia(quant, vetor));
             }
             //Tratamento do tamanho da array
             catch (IndexOutOfRangeException ex)
             {
                 Console.WriteLine("O número precisa ser igual ou maior que 2, seu burro!");
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
         }
